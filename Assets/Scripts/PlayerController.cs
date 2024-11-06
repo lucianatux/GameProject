@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
-    public float jumpForce = 8f;
+    public float jumpForce = 10f;
 
     private Rigidbody2D rb;
     private int jumpCount = 0; // Contador de saltos
@@ -13,10 +13,13 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = false; // Indica si el personaje está en el suelo
     private bool facingRight = true; // Indica la dirección del personaje
 
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,6 +28,8 @@ public class PlayerController : MonoBehaviour
         // Movimiento horizontal
         float moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+
+        animator.SetFloat("Horizontal", Mathf.Abs(moveInput));
 
          // Giro del personaje
         if (moveInput > 0 && !facingRight)
@@ -43,7 +48,25 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpCount++;
             isGrounded = false; // Desactiva el estado de suelo al saltar
+
+            // Activar la animación de salto
+            animator.SetBool("canJump", true); // Activa la animación al iniciar el salto
+      
         } 
+        // Empuje
+            animator.SetBool("isPushing", Input.GetKey(KeyCode.E)); // Activa/desactiva mientras "E" esté presionada
+
+            // Dar la vuelta
+            animator.SetBool("isTurningAround", Input.GetKey(KeyCode.Z)); // Activa/desactiva mientras "Z" esté presionada
+
+            // Hablar con el usuario
+            animator.SetBool("isTalkingFront", Input.GetKey(KeyCode.X)); // Activa/desactiva mientras "X" esté presionada
+
+            // Hablar de costado
+            animator.SetBool("isTalkingSide", Input.GetKey(KeyCode.C)); // Activa/desactiva mientras "C" esté presionada
+
+        
+
     }
     // Detecta colisión con el suelo
     private void OnCollisionEnter2D(Collision2D collision)
@@ -52,6 +75,10 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             jumpCount = 0; // Reinicia el contador de saltos al tocar el suelo
+
+            // Permitir nuevamente la animación de salto
+            animator.SetBool("canJump", false); // Desactiva la animación al tocar el suelo
+      
         }
     }
     // Método para voltear la dirección del personaje
