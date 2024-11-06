@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpForce = 10f;
+    public float groundDistanceVerifier;
 
     private Rigidbody2D rb;
     private int jumpCount = 0; // Contador de saltos
@@ -73,11 +74,17 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = true;
-            jumpCount = 0; // Reinicia el contador de saltos al tocar el suelo
+            var onGroundRay = Physics2D.Raycast(transform.position, Vector2.down, groundDistanceVerifier, LayerMask.NameToLayer("Player"));
 
-            // Permitir nuevamente la animación de salto
-            animator.SetBool("canJump", false); // Desactiva la animación al tocar el suelo
+            if (onGroundRay.collider != null)
+            {
+
+                isGrounded = true;
+                jumpCount = 0; // Reinicia el contador de saltos al tocar el suelo
+
+                // Permitir nuevamente la animación de salto
+                animator.SetBool("canJump", false); // Desactiva la animación al tocar el suelo
+            }
       
         }
     }
