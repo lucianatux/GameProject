@@ -1,0 +1,950 @@
+fileFormatVersion: 2
+guid: 2f9b7139aa2a0864d99caf5b8cf8fde3
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 160
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: duendeactions-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1920
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5711336a99b839747abfb370aa773b9f
+      internalID: -569057143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 1920
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 997102ffd2db390469fac051ff60fcea
+      internalID: 1483581369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1920
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b749e985d75a0ae4aa35de82e5f9412f
+      internalID: 1580453614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1920
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1dace1af91bcef4fa066891e78aad4b
+      internalID: -754402701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1920
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4dac75f3246eb949b81588253df6143
+      internalID: 1510449520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 1920
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d254e32842c22a64bacdc8ceb7fa953f
+      internalID: 1725821633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 1920
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd733c68aee46c54ab667ff8c71e0083
+      internalID: 1095361711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 1920
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 792f07d37e81af148b398712a8d6924d
+      internalID: 514964766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 1920
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e48b6a4feeb288746a9eccd2a39709d4
+      internalID: -1347688644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1440
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8b6a06b0eb3edf40913e6bc8376eab7
+      internalID: -895981863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 1440
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f49e3dc0ac45a4e4bb3b49ed9d85f1dd
+      internalID: 2033662959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1440
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc2b91f576700864b84b3890d640138d
+      internalID: 1682418036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1440
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25e5fae0a6733244591eec86c6fd7ba5
+      internalID: 968718653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1440
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff0878ce0fc48145972b24a6b071294
+      internalID: 1936769845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 1440
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5869a041f51a0b43920dc754873d5da
+      internalID: -141897092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 1440
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79572154c1bdbca48ad91f7dbef52c60
+      internalID: -249079828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 1440
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56e7045a8e81aae48a6abdbf2d121d6f
+      internalID: -2110802517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 1440
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5cde768cbea2d24bb677094bd54f0e1
+      internalID: 645087796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 960
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca1ab4ab1f4810147825f6e15f7a1bf8
+      internalID: -608224541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 960
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa426d0766af90047b68a8fc62898e59
+      internalID: -119349032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 960
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 516d8daac7c90e547a3f4b09f0b1a9fd
+      internalID: 506004057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 960
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f223a0a5287784e94194372700e809
+      internalID: -1389233520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 960
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08904df293fc824409664e01412665bf
+      internalID: 1838459749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 960
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c30c5c1965f722c43b76d45f008c9276
+      internalID: -21535443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 960
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83644a30607e5864c903ca82546b67ad
+      internalID: 1083368279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 960
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551b7f23aab5ec44d93d42690a383c98
+      internalID: 851011866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 960
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb420a1d949463e49a154f3e24396c60
+      internalID: 608645149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a1030a832451b5469251826f9902f34
+      internalID: -330385985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 480
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58bdf281af2e94e458613a50236243d4
+      internalID: -2054741760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 480
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 205a0c5ada4f3734e9e164554540ef02
+      internalID: -311594875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 480
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27a3e725737fd124180e5ae4a8848b8a
+      internalID: -37258382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 480
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b95460856505a1c499ef613c71585447
+      internalID: -653418901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 480
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf3fa5a4ca831ab4da8a4532b12c2b7a
+      internalID: 1060183177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 480
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 690d511bd28b45c41b314149a190320b
+      internalID: -117816844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 480
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ea08f6baee22574e851503a8b0f5d74
+      internalID: -1195066256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 480
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 277c7e38f129edb48ba5e6b9384b24eb
+      internalID: 1063243478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcb6f4ab0ebc0f04c8cf9c9f3b51e802
+      internalID: -523516016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duendeactions-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 460
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25691e47654272e47b17b57a6b29f40f
+      internalID: 228809609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      duendeactions-Sheet_0: -569057143
+      duendeactions-Sheet_1: 1483581369
+      duendeactions-Sheet_10: 2033662959
+      duendeactions-Sheet_11: 1682418036
+      duendeactions-Sheet_12: 968718653
+      duendeactions-Sheet_13: 1936769845
+      duendeactions-Sheet_14: -141897092
+      duendeactions-Sheet_15: -249079828
+      duendeactions-Sheet_16: -2110802517
+      duendeactions-Sheet_17: 645087796
+      duendeactions-Sheet_18: -608224541
+      duendeactions-Sheet_19: -119349032
+      duendeactions-Sheet_2: 1580453614
+      duendeactions-Sheet_20: 506004057
+      duendeactions-Sheet_21: -1389233520
+      duendeactions-Sheet_22: 1838459749
+      duendeactions-Sheet_23: -21535443
+      duendeactions-Sheet_24: 1083368279
+      duendeactions-Sheet_25: 851011866
+      duendeactions-Sheet_26: 608645149
+      duendeactions-Sheet_27: -330385985
+      duendeactions-Sheet_28: -2054741760
+      duendeactions-Sheet_29: -311594875
+      duendeactions-Sheet_3: -754402701
+      duendeactions-Sheet_30: -37258382
+      duendeactions-Sheet_31: -653418901
+      duendeactions-Sheet_32: 1060183177
+      duendeactions-Sheet_33: -117816844
+      duendeactions-Sheet_34: -1195066256
+      duendeactions-Sheet_35: 1063243478
+      duendeactions-Sheet_36: -523516016
+      duendeactions-Sheet_37: 228809609
+      duendeactions-Sheet_4: 1510449520
+      duendeactions-Sheet_5: 1725821633
+      duendeactions-Sheet_6: 1095361711
+      duendeactions-Sheet_7: 514964766
+      duendeactions-Sheet_8: -1347688644
+      duendeactions-Sheet_9: -895981863
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
