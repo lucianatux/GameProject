@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Patrol : MonoBehaviour
 {
-public float leftLimit = -4f;
+    public float leftLimit = -4f;
     public float rightLimit = 4f;
     public float speed = 2f;
-    public float fallSpeed = 5f; // Velocidad de caída al ser pisado
-    public float fallDelay = 0.5f; // Retraso en segundos antes de comenzar a caer
+    private float fallSpeed = 10f; // Velocidad de caída al ser pisado
+    private float fallDelay = 0.5f; // Retraso en segundos antes de comenzar a caer
 
     private bool movingRight = false;
     private bool isSteppedOn = false; // Controla si el mosquito fue pisado
@@ -74,13 +74,21 @@ public float leftLimit = -4f;
         StartCoroutine(Fall()); // Inicia la caída como una corrutina
     }
 
-    private IEnumerator Fall()
+   private IEnumerator Fall()
+{
+    // Activa la caída continua del mosquito en el eje Y
+    float fallTime = 0f;
+    Vector3 startingPosition = transform.position; // Almacenamos la posición inicial
+
+    while (fallTime < 10f) // Cae durante 10 segundos
     {
-        // Activa la caída continua del mosquito en el eje Y
-        while (true)
-        {
-            transform.position += Vector3.down * fallSpeed * Time.deltaTime;
-            yield return null; // Continúa la caída en cada frame
-        }
+        transform.position += Vector3.down * fallSpeed * Time.deltaTime;
+        fallTime += Time.deltaTime;
+        yield return null;
     }
+
+    // Después de 10 segundos, detiene la caída y reinicia el patrullaje en la posición inicial
+    isSteppedOn = false;
+    transform.position = startingPosition; // Volvemos a la posición inicial
+}
 }
