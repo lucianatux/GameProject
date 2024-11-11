@@ -17,7 +17,10 @@ public class Patrol : MonoBehaviour
 
     private void Start()
     {
-        initialPosition = transform.position; // Guarda la posición inicial al iniciar el juego
+         initialPosition = transform.position; // Guarda la posición inicial al iniciar el juego
+        // Ajustamos los límites de patrullaje en base a la posición inicial
+        leftLimit = initialPosition.x - 3f; // Establece el límite izquierdo con respecto a la posición inicial
+        rightLimit = initialPosition.x + 3f; // Establece el límite derecho con respecto a la posición inicial
     }
 
 
@@ -88,7 +91,7 @@ public class Patrol : MonoBehaviour
         isSteppedOn = true; // Detiene el patrullaje cuando es pisado
         float fallTime = 0f;
 
-        while (fallTime < 10f) // Cae durante 10 segundos
+        while (fallTime < 15f) // Cae durante 10 segundos
         {
             transform.position += Vector3.down * fallSpeed * Time.deltaTime;
             fallTime += Time.deltaTime;
