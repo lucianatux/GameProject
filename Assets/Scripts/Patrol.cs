@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class Patrol : MonoBehaviour
 {
-    public float leftLimit = -4f;
-    public float rightLimit = 4f;
-    public float speed = 2f;
-    private float fallSpeed = 10f; // Velocidad de caída al ser pisado
-    private float fallDelay = 0.5f; // Retraso en segundos antes de comenzar a caer
+    private float leftLimit = -3f;
+    private float rightLimit = 3f;
+    private float speed = 2f;
+    private float fallSpeed = 12f; // Velocidad de caída al ser pisado
+    private float fallDelay = 0.3f; // Retraso en segundos antes de comenzar a caer
 
     private bool movingRight = false;
     private bool isSteppedOn = false; // Controla si el mosquito fue pisado
+    private Vector3 initialPosition; // Guardará la posición inicial del mosquito
+
+
+    private void Start()
+    {
+        initialPosition = transform.position; // Guarda la posición inicial al iniciar el juego
+    }
+
 
     private void Update()
     {
@@ -74,21 +82,21 @@ public class Patrol : MonoBehaviour
         StartCoroutine(Fall()); // Inicia la caída como una corrutina
     }
 
-   private IEnumerator Fall()
-{
-    // Activa la caída continua del mosquito en el eje Y
-    float fallTime = 0f;
-    Vector3 startingPosition = transform.position; // Almacenamos la posición inicial
-
-    while (fallTime < 10f) // Cae durante 10 segundos
+   
+    private IEnumerator Fall()
     {
-        transform.position += Vector3.down * fallSpeed * Time.deltaTime;
-        fallTime += Time.deltaTime;
-        yield return null;
-    }
+        isSteppedOn = true; // Detiene el patrullaje cuando es pisado
+        float fallTime = 0f;
 
-    // Después de 10 segundos, detiene la caída y reinicia el patrullaje en la posición inicial
-    isSteppedOn = false;
-    transform.position = startingPosition; // Volvemos a la posición inicial
-}
+        while (fallTime < 10f) // Cae durante 10 segundos
+        {
+            transform.position += Vector3.down * fallSpeed * Time.deltaTime;
+            fallTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Reinicia el patrullaje en la posición inicial guardada en Start()
+        isSteppedOn = false;
+        transform.position = initialPosition; // Vuelve a la posición inicial
+    }
 }
