@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 140643974}
   - component: {fileID: 140643973}
   - component: {fileID: 140643972}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -33614,7 +33614,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.18, y: 1.62, z: -10.023703}
+  m_LocalPosition: {x: 3.18, y: 1.3950002, z: -10.023703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33866,7 +33866,7 @@ GameObject:
   - component: {fileID: 811437109}
   - component: {fileID: 811437108}
   - component: {fileID: 811437113}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Speaker
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -34608,7 +34608,7 @@ GameObject:
   - component: {fileID: 1190112983}
   - component: {fileID: 1190112982}
   - component: {fileID: 1190112987}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bear
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -35082,6 +35082,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d68ceca83111d544ad4e229105306ff, type: 3}
+--- !u!1 &1451941676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1451941677}
+  m_Layer: 0
+  m_Name: groundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1451941677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451941676}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.139, y: -1.403, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1632907812}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1480162778
 GameObject:
   m_ObjectHideFlags: 0
@@ -35148,7 +35179,7 @@ Transform:
   m_GameObject: {fileID: 1480162778}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.18, y: 1.6200002, z: -10.023703}
+  m_LocalPosition: {x: 3.18, y: 1.3950002, z: -10.023703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -142101,6 +142132,18 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1048570119100014571, guid: 51dcd1571109f86429b115154fef79d1, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 1451941677}
+    - target: {fileID: 1048570119100014571, guid: 51dcd1571109f86429b115154fef79d1, type: 3}
+      propertyPath: groundCheckRadius
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048570119100014571, guid: 51dcd1571109f86429b115154fef79d1, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5258797272490626468, guid: 51dcd1571109f86429b115154fef79d1, type: 3}
       propertyPath: m_Name
       value: Player
@@ -142127,7 +142170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8175170801808555745, guid: 51dcd1571109f86429b115154fef79d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.62
+      value: 1.395
       objectReference: {fileID: 0}
     - target: {fileID: 8175170801808555745, guid: 51dcd1571109f86429b115154fef79d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -142163,7 +142206,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8175170801808555745, guid: 51dcd1571109f86429b115154fef79d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1451941677}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5258797272490626468, guid: 51dcd1571109f86429b115154fef79d1, type: 3}
       insertIndex: -1
