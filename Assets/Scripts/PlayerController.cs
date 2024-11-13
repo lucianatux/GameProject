@@ -40,57 +40,61 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isJumping", false); // Desactiva la animación de salto cuando está en el suelo
         }
 
-        // Movimiento horizontal
-        float moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-        animator.SetFloat("Horizontal", Mathf.Abs(moveInput));
-
-        // Giro del personaje
-        if (moveInput > 0 && !facingRight)
-        {
-            Flip();
-        }
-        else if (moveInput < 0 && facingRight)
-        {
-            Flip();
-        }
-
-        // Empuje
-        animator.SetBool("isPushing", Input.GetKey(KeyCode.E)); // Activa/desactiva mientras "E" esté presionada
-
-        // Dar la vuelta
-        animator.SetBool("isTurningAround", Input.GetKey(KeyCode.Z)); // Activa/desactiva mientras "Z" esté presionada
-
-        // Hablar con el usuario
-        animator.SetBool("isTalkingFront", Input.GetKey(KeyCode.X)); // Activa/desactiva mientras "X" esté presionada
-
-        // Hablar de costado
-        animator.SetBool("isTalkingSide", Input.GetKey(KeyCode.C)); // Activa/desactiva mientras "C" esté presionada
-
-        // Salto
-        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || jumpCount < maxJumps))
-        {
-            if (isGrounded) 
+    if (canMove)
             {
-                // Si está en el suelo, hace un salto y activa la animación
-                animator.SetBool("isJumping", true); // Activa la animación de salto al iniciar el salto
+            // Movimiento horizontal
+            float moveInput = Input.GetAxis("Horizontal");
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+            animator.SetFloat("Horizontal", Mathf.Abs(moveInput));
+
+            // Giro del personaje
+            if (moveInput > 0 && !facingRight)
+            {
+                Flip();
             }
-            else
+            else if (moveInput < 0 && facingRight)
             {
-                // Si no está en el suelo, continúa permitiendo el salto adicional
-                animator.SetBool("isJumping", true); // Mantiene la animación de salto mientras en el aire
+                Flip();
             }
 
-            rb.velocity = new Vector2(rb.velocity.x, 0f); // Reinicia la velocidad en y antes del salto
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            jumpCount++; // Incrementa el contador de saltos
+            // Empuje
+            animator.SetBool("isPushing", Input.GetKey(KeyCode.E)); // Activa/desactiva mientras "E" esté presionada
 
-            // Aseguramos que el contador no pase del máximo
-            if (jumpCount > maxJumps)
+            // Dar la vuelta
+            animator.SetBool("isTurningAround", Input.GetKey(KeyCode.Z)); // Activa/desactiva mientras "Z" esté presionada
+
+            // Hablar con el usuario
+            animator.SetBool("isTalkingFront", Input.GetKey(KeyCode.X)); // Activa/desactiva mientras "X" esté presionada
+
+            // Hablar de costado
+            animator.SetBool("isTalkingSide", Input.GetKey(KeyCode.C)); // Activa/desactiva mientras "C" esté presionada
+
+            // Salto
+            if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || jumpCount < maxJumps))
             {
-                jumpCount = maxJumps; // Asegura que el salto no pase de 2
+                if (isGrounded) 
+                {
+                    // Si está en el suelo, hace un salto y activa la animación
+                    animator.SetBool("isJumping", true); // Activa la animación de salto al iniciar el salto
+                }
+                else
+                {
+                    // Si no está en el suelo, continúa permitiendo el salto adicional
+                    animator.SetBool("isJumping", true); // Mantiene la animación de salto mientras en el aire
+                }
+
+                rb.velocity = new Vector2(rb.velocity.x, 0f); // Reinicia la velocidad en y antes del salto
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                jumpCount++; // Incrementa el contador de saltos
+
+                // Aseguramos que el contador no pase del máximo
+                if (jumpCount > maxJumps)
+                {
+                    jumpCount = maxJumps; // Asegura que el salto no pase de 2
+                }
             }
         }
+        
 
         // Si el personaje toca el suelo, reinicia el contador de saltos
         if (isGrounded)
@@ -158,6 +162,20 @@ public class PlayerController : MonoBehaviour
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
     }
+    private bool canMove = true;
+
+    // Método para desactivar el movimiento
+    public void DisableMovement()
+    {
+        canMove = false;
+    }
+
+    // Método para reactivar el movimiento
+    public void EnableMovement()
+    {
+        canMove = true;
+    }
+
 }
 
 
