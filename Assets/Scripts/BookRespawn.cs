@@ -31,7 +31,7 @@ public class BookRespawn : MonoBehaviour
         {
             isFalling = true;
             Debug.Log("El libro ha comenzado a caer.");
-            StartCoroutine(RespawnAfterDelay(4f)); // Espera 4 segundos antes de hacer respawn
+            StartCoroutine(RespawnAfterDelay(1f)); // Espera 1 segundo antes de hacer respawn
         }
     }
 

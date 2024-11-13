@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement; 
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -17,12 +18,14 @@ public class PlayerController : MonoBehaviour
     private int jumpCount = 0; // Contador de saltos
     private int maxJumps = 1; // Número máximo de saltos permitidos ademas del salto normal
     private bool isGrounded = false; // Indica si el personaje está en el suelo
+    private int currentLives;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        currentLives = 1;
     }
 
     // Update is called once per frame
@@ -104,9 +107,37 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isJumping", true); // Mantiene la animación activa mientras está en el aire
         }
+        // Reinicio del juego si las vidas se reducen a cero
+
+         if (currentLives <= 0)
+        {
+            RestartGame();
+        }
     }
 
+    //Método para agregar vidas
+    public void AddLife()
+        {
+            currentLives++;
+            Debug.Log("Vida añadida. Vidas actuales: " + currentLives);
+        }
+    //Método para perder vidas
+    public void LoseLife()
+    {
+        currentLives--;
+        Debug.Log("Vida perdida. Vidas restantes: " + currentLives);
 
+        if (currentLives <= 0)
+        {
+            RestartGame();
+        }
+    }
+    //Reinicia el juego
+    private void RestartGame()
+    {
+        // Reinicia la escena actual
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 
     // Método para voltear la dirección del personaje

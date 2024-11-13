@@ -9,8 +9,14 @@ public class MagicController : MonoBehaviour
        // Verificamos si el objeto que colisiona es el jugador
         if (collision.CompareTag("Player"))
         {
-            // Destruir la moneda al ser recogida
-            Destroy(gameObject);
+            PlayerController player = collision.GetComponent<PlayerController>();
+
+            if (player != null)
+            {
+                player.AddLife(); // Añade una vida al jugador
+            }
+
+            Destroy(gameObject); // Destruye el objeto de magia
         }
     }
 }

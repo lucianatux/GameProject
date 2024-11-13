@@ -75,6 +75,17 @@ public class Patrol : MonoBehaviour
             {
                 StartCoroutine(BeginFall()); // Inicia la corrutina para el retraso de la caída
             }
+             
+            else
+            {
+                // Si el mosquito pica al jugador por contacto en cualquier parte
+                PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+
+                if (player != null)
+                {
+                    player.LoseLife(); // Quita una vida al jugador
+                }
+            }
         }
     }
 
