@@ -6,7 +6,7 @@ public class MusicBox : MonoBehaviour
 {
     public Animator playerAnimator; // Referencia al Animator del jugador
     public AudioSource audioSource; // Referencia al AudioSource para la música
-    public float turnAroundDuration = 5f; // Duración en segundos del "turnaround"
+    public float turnAroundDuration = 14f; // Duración en segundos del "turnaround"
 
     private bool isInsideTrigger = false; // Determina si el jugador está dentro del área
     private float timer = 0f; // Temporizador para controlar la duración del "turnaround"
@@ -16,7 +16,7 @@ public class MusicBox : MonoBehaviour
         // Si el jugador está dentro del área de la caja musical y el temporizador está corriendo
         if (isInsideTrigger)
         {
-            // Temporizador que simula la tecla Z presionada por 5 segundos
+            // Temporizador que simula la tecla Z presionada por x segundos
             if (timer < turnAroundDuration)
             {
                 timer += Time.deltaTime; // Aumenta el tiempo transcurrido
@@ -24,7 +24,7 @@ public class MusicBox : MonoBehaviour
             }
             else
             {
-                // Después de 5 segundos, desactiva la animación
+                // Después de x segundos, desactiva la animación
                 playerAnimator.SetBool("isTurningAround", false);
                 isInsideTrigger = false; // Desactiva el área de influencia
             }

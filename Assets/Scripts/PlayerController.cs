@@ -69,6 +69,10 @@ public class PlayerController : MonoBehaviour
             // Hablar de costado
             animator.SetBool("isTalkingSide", Input.GetKey(KeyCode.C)); // Activa/desactiva mientras "C" esté presionada
 
+            // Activar objetos
+            animator.SetBool("isActivating", Input.GetKeyDown(KeyCode.F)); // Activa solo una vez al presionar "F"
+
+
             // Salto
             if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || jumpCount < maxJumps))
             {

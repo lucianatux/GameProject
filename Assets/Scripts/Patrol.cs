@@ -102,7 +102,7 @@ public class Patrol : MonoBehaviour
         isSteppedOn = true; // Detiene el patrullaje cuando es pisado
         float fallTime = 0f;
 
-        while (fallTime < 15f) // Cae durante 10 segundos
+        while (fallTime < 25f) // Cae durante x segundos
         {
             transform.position += Vector3.down * fallSpeed * Time.deltaTime;
             fallTime += Time.deltaTime;
