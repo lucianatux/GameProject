@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator animator;
+    private IInteractable currentInteractable;
      
     private float speed = 5f;
     private bool facingRight = true; // Indica la dirección del personaje
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isJumping", false); // Desactiva la animación de salto cuando está en el suelo
         }
 
-    if (canMove)
+        if (canMove)
             {
             // Movimiento horizontal
             float moveInput = Input.GetAxis("Horizontal");
@@ -69,9 +70,17 @@ public class PlayerController : MonoBehaviour
             // Hablar de costado
             animator.SetBool("isTalkingSide", Input.GetKey(KeyCode.C)); // Activa/desactiva mientras "C" esté presionada
 
-            // Activar objetos
-            animator.SetBool("isActivating", Input.GetKeyDown(KeyCode.F)); // Activa solo una vez al presionar "F"
-
+            //Activar elementos
+            animator.SetBool("isActivating", Input.GetKeyDown(KeyCode.F));
+            
+             if (Input.GetKeyDown(KeyCode.F))
+            {
+                // Ejecuta la interacción si hay un objeto cerca.
+                if (currentInteractable != null)
+                {
+                    currentInteractable.Interact();
+                }
+            }
 
             // Salto
             if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || jumpCount < maxJumps))
@@ -178,6 +187,19 @@ public class PlayerController : MonoBehaviour
     public void EnableMovement()
     {
         canMove = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        currentInteractable = collision.GetComponent<IInteractable>();
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<IInteractable>() == currentInteractable)
+        {
+            currentInteractable = null;
+        }
     }
 
 }
