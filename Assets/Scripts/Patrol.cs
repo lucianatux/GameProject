@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Patrol : MonoBehaviour
 {
-    private float leftLimit = -3f;
-    private float rightLimit = 3f;
+    private float leftLimit;
+    private float rightLimit;
     private float speed = 2f;
     private float fallSpeed = 12f; // Velocidad de caída al ser pisado
     private float fallDelay = 0.3f; // Retraso en segundos antes de comenzar a caer

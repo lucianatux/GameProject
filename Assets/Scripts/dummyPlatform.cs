@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlatforms : MonoBehaviour
+public class DummyPlatform : MonoBehaviour
 {
     private float leftLimit;
     private float rightLimit;
@@ -20,10 +20,10 @@ public class MovingPlatforms : MonoBehaviour
 
     private void Update()
     {
-            PatrolDog();
+            PatrolDummy();
     }
 
-    private void PatrolDog()
+    private void PatrolDummy()
     {
         // Movimiento de patrullaje en el eje X
         if (movingRight)
@@ -32,7 +32,6 @@ public class MovingPlatforms : MonoBehaviour
             if (transform.position.x >= rightLimit)
             {
                 movingRight = false;
-                Flip();
             }
         }
         else
@@ -41,15 +40,32 @@ public class MovingPlatforms : MonoBehaviour
             if (transform.position.x <= leftLimit)
             {
                 movingRight = true;
-                Flip();
             }
         }
     }
 
-     private void Flip()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(transform);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Asegurarte de que SetParent se llama solo si el objeto está activo.
+            if (gameObject.activeInHierarchy)
+            {
+                collision.transform.SetParent(null);
+            }
+            else
+            {
+                Debug.LogWarning("El objeto está desactivado, no se pudo desasociar al Player.");
+            }
+        }
     }
 }
+
