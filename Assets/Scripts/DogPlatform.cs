@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlatforms : MonoBehaviour
+public class DogPlatform : MonoBehaviour
 {
     private float leftLimit;
     private float rightLimit;
@@ -14,7 +14,7 @@ public class MovingPlatforms : MonoBehaviour
    private void Start()
     {
         initialPosition = transform.position; 
-        leftLimit = initialPosition.x - 10f; 
+        leftLimit = initialPosition.x - 20f; 
         rightLimit = initialPosition.x + 10f; 
     }
 

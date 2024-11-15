@@ -14,7 +14,7 @@ public class DummyPlatform : MonoBehaviour
    private void Start()
     {
         initialPosition = transform.position; 
-        leftLimit = initialPosition.x - 10f; 
+        leftLimit = initialPosition.x - 20f; 
         rightLimit = initialPosition.x + 10f; 
     }
 
