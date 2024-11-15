@@ -19,13 +19,22 @@ public class BookRespawn : MonoBehaviour
 
     private void Update()
     {
-        // Detectar si el libro ha sido empujado en el eje X (movimiento del jugador)
+        CheckIfPushed();
+        CheckIfFalling();
+    }
+
+    private void CheckIfPushed()
+    {
+         // Detectar si el libro ha sido empujado en el eje X (movimiento del jugador)
         if (!isPushed && Mathf.Abs(rb.velocity.x) > 0.1f)
         {
             isPushed = true;
             Debug.Log("El libro ha sido empujado.");
         }
+    }
 
+    private void CheckIfFalling()
+    {
         // Detectar si el libro ha comenzado a caer (movimiento hacia abajo en el eje Y)
         if (isPushed && !isFalling && Mathf.Abs(rb.velocity.y) > 3f)
         {

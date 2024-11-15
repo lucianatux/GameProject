@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DogPlatform : MonoBehaviour
-{
-    private float leftLimit;
-    private float rightLimit;
-    private float speed = 2f;
-    private bool movingRight = false;
-    private Vector3 initialPosition;
+{   
+    // Límites de movimiento en el eje X
+    [SerializeField] private float leftLimit = 20f;
+    [SerializeField] private float rightLimit = 10f;
+    // Velocidad de patrullaje
+    [SerializeField] private float speed = 2f;
+
+    private bool movingRight = false;// Determina si el objeto está moviéndose hacia la derecha
+    private Vector3 initialPosition; // Posición inicial para calcular los límites
 
    
    private void Start()
     {
         initialPosition = transform.position; 
-        leftLimit = initialPosition.x - 20f; 
-        rightLimit = initialPosition.x + 10f; 
+        leftLimit = initialPosition.x - leftLimit;
+        rightLimit = initialPosition.x + rightLimit;
     }
 
     private void Update()

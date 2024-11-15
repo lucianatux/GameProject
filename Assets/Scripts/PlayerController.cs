@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
      
     private float speed = 5f;
     private bool facingRight = true; // Indica la dirección del personaje
-
     private float jumpForce = 10f;
     public Transform groundCheck; // Transform del punto de verificación del suelo
     public float groundCheckRadius = 0.2f; // Radio de detección del suelo
@@ -107,14 +106,11 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        
-
         // Si el personaje toca el suelo, reinicia el contador de saltos
         if (isGrounded)
         {
             jumpCount = 0; // Reinicia el contador de saltos
         }
-
         // Detener la animación de salto cuando el personaje está en el aire o en el suelo
         if (isGrounded)
         {
@@ -124,6 +120,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isJumping", true); // Mantiene la animación activa mientras está en el aire
         }
+        
         // Reinicio del juego si las vidas se reducen a cero
 
          if (currentLives <= 0)
