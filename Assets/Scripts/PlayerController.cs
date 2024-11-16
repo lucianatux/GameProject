@@ -32,22 +32,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Verifica si el personaje está en el suelo usando OverlapCircle
-        // Verifica si el jugador está tocando el suelo utilizando un círculo de colisión.
-        // Si está en el suelo, reinicia el contador de saltos y desactiva la animación de salto.
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        if (isGrounded)
-        {
-            jumpCount = 0; // Reinicia el contador de saltos al tocar el suelo
-            animator.SetBool("isJumping", false); // Desactiva la animación de salto cuando está en el suelo
-        }
-        else
-        {
-            animator.SetBool("isJumping", true); // Mantiene la animación activa mientras está en el aire
-        }
+        HandleJump();     // Llamamos a la función de salto.
+       
 
         if (canMove)
-            {
+        {
             // Movimiento horizontal
             float moveInput = Input.GetAxis("Horizontal");
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
@@ -89,22 +78,36 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            // Salto
-            // Detecta si el jugador presiona la tecla de salto (Space) y si puede saltar.
-            // El salto es permitido si el jugador está en el suelo o si aún tiene saltos disponibles.
-            if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || jumpCount < extraJump))
+            
+        
+            // Si el jugador pierde todas las vidas, se reinicia la escena actual.
+            if (currentLives <= 0)
             {
-                if (isGrounded) 
-                {
-                    // Si está en el suelo, hace un salto y activa la animación
-                    animator.SetBool("isJumping", true); // Activa la animación de salto al iniciar el salto
-                }
-                else
-                {
-                    // Si no está en el suelo, continúa permitiendo el salto adicional
-                    animator.SetBool("isJumping", true); // Mantiene la animación de salto mientras en el aire
-                }
-
+                RestartGame();
+            }
+        }
+    }
+    //Maneja el salto
+    private void HandleJump()
+    {
+         // Verifica si el personaje está en el suelo usando OverlapCircle
+        // Verifica si el jugador está tocando el suelo utilizando un círculo de colisión.
+        // Si está en el suelo, reinicia el contador de saltos y desactiva la animación de salto.
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        if (isGrounded)
+        {
+            jumpCount = 0; // Reinicia el contador de saltos al tocar el suelo
+            animator.SetBool("isJumping", false); // Desactiva la animación de salto cuando está en el suelo
+        }
+        else
+        {
+            animator.SetBool("isJumping", true); // Mantiene la animación activa mientras está en el aire
+        }
+        // Salto
+        // Detecta si el jugador presiona la tecla de salto (Space) y si puede saltar.
+        // El salto es permitido si el jugador está en el suelo o si aún tiene saltos disponibles.
+        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || jumpCount < extraJump))
+        {
                 rb.velocity = new Vector2(rb.velocity.x, 0f); // Reinicia la velocidad en y antes del salto
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 jumpCount++; // Incrementa el contador de saltos
@@ -114,15 +117,9 @@ public class PlayerController : MonoBehaviour
                 {
                     jumpCount = extraJump; // Asegura que el salto no pase de 2
                 }
-            }
-        }
-        
-        // Si el jugador pierde todas las vidas, se reinicia la escena actual.
-         if (currentLives <= 0)
-        {
-            RestartGame();
         }
     }
+    
 
     //Método para agregar un punto de vida al jugador
     public void AddLife()
