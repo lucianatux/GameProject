@@ -8,15 +8,15 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private IInteractable currentInteractable;
-     
-    private float speed = 5f;
+
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundCheckRadius = 0.2f;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private int extraJump = 1;
     private bool facingRight = true; // Indica la dirección del personaje
-    private float jumpForce = 10f;
-    public Transform groundCheck; // Transform del punto de verificación del suelo
-    public float groundCheckRadius = 0.2f; // Radio de detección del suelo
-    public LayerMask groundLayer; // Layer del suelo para verificar colisiones
     private int jumpCount = 0; // Contador de saltos
-    private int maxJumps = 1; // Número máximo de saltos permitidos ademas del salto normal
     private bool isGrounded = false; // Indica si el personaje está en el suelo
     private int currentLives;
 
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
             // Salto
             // Detecta si el jugador presiona la tecla de salto (Space) y si puede saltar.
             // El salto es permitido si el jugador está en el suelo o si aún tiene saltos disponibles.
-            if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || jumpCount < maxJumps))
+            if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || jumpCount < extraJump))
             {
                 if (isGrounded) 
                 {
@@ -110,32 +110,31 @@ public class PlayerController : MonoBehaviour
                 jumpCount++; // Incrementa el contador de saltos
 
                 // Aseguramos que el contador no pase del máximo
-                if (jumpCount > maxJumps)
+                if (jumpCount > extraJump)
                 {
-                    jumpCount = maxJumps; // Asegura que el salto no pase de 2
+                    jumpCount = extraJump; // Asegura que el salto no pase de 2
                 }
             }
         }
         
-        // Reinicio del juego si las vidas se reducen a cero
-
+        // Si el jugador pierde todas las vidas, se reinicia la escena actual.
          if (currentLives <= 0)
         {
             RestartGame();
         }
     }
 
-    //Método para agregar vidas
+    //Método para agregar un punto de vida al jugador
     public void AddLife()
         {
             currentLives++;
-            Debug.Log("Vida añadida. Vidas actuales: " + currentLives);
+            Debug.Log("Punto de vida añadida. Puntos de vida actuales: " + currentLives);
         }
-    //Método para perder vidas
+    //Método para restar un punto de vida al jugador
     public void LoseLife()
     {
         currentLives--;
-        Debug.Log("Vida perdida. Vidas restantes: " + currentLives);
+        Debug.Log("Punto de vida perdida. Puntos de vida restantes: " + currentLives);
 
         if (currentLives <= 0)
         {
@@ -160,6 +159,8 @@ public class PlayerController : MonoBehaviour
     }
 
     // Visualización del groundCheck en el editor
+    // Dibuja un gizmo en el editor para visualizar el área de comprobación del suelo
+    // (usado para depuración).
     private void OnDrawGizmos()
     {
         if (groundCheck != null)
@@ -168,14 +169,13 @@ public class PlayerController : MonoBehaviour
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
     }
+    
     private bool canMove = true;
-
     // Método para desactivar el movimiento
     public void DisableMovement()
     {
         canMove = false;
     }
-
     // Método para reactivar el movimiento
     public void EnableMovement()
     {
