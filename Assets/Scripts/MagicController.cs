@@ -23,7 +23,7 @@ public class MagicController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       // Verificamos si el objeto que colisiona es el jugador
+       // Verifica si el objeto que colisiona es el jugador
         if (collision.CompareTag("Player"))
         {
             PlayerController player = collision.GetComponent<PlayerController>();
@@ -32,11 +32,10 @@ public class MagicController : MonoBehaviour
             {
                 player.AddLife(); // Añade una vida al jugador
             }
-             // Reproducir el sonido
+             // Reproduce el sonido
             if (audioSource != null)
             {
-                Debug.Log("Reproduciendo audio...");
-                audioSource.Play(); // Reproducir el audio
+                audioSource.Play(); // Reproduce el audio
             }
 
 

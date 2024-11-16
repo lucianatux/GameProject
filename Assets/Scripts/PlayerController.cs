@@ -20,24 +20,30 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = false; // Indica si el personaje está en el suelo
     private int currentLives;
 
-    // Start is called before the first frame update
+    // Inicializa los componentes necesarios del jugador (Rigidbody y Animator).
+    // También establece la cantidad inicial de vidas del jugador.
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        currentLives = 10;
+        currentLives = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Verifica si el personaje está en el suelo usando OverlapCircle
+        // Verifica si el jugador está tocando el suelo utilizando un círculo de colisión.
+        // Si está en el suelo, reinicia el contador de saltos y desactiva la animación de salto.
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-
         if (isGrounded)
         {
             jumpCount = 0; // Reinicia el contador de saltos al tocar el suelo
             animator.SetBool("isJumping", false); // Desactiva la animación de salto cuando está en el suelo
+        }
+        else
+        {
+            animator.SetBool("isJumping", true); // Mantiene la animación activa mientras está en el aire
         }
 
         if (canMove)
@@ -70,6 +76,8 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isTalkingSide", Input.GetKey(KeyCode.C)); // Activa/desactiva mientras "C" esté presionada
 
             //Activar elementos
+            // Si el jugador presiona la tecla F, se ejecuta la interacción con el objeto cercano
+            // si es que hay un objeto interactuable.
             animator.SetBool("isActivating", Input.GetKeyDown(KeyCode.F));
             
              if (Input.GetKeyDown(KeyCode.F))
@@ -82,6 +90,8 @@ public class PlayerController : MonoBehaviour
             }
 
             // Salto
+            // Detecta si el jugador presiona la tecla de salto (Space) y si puede saltar.
+            // El salto es permitido si el jugador está en el suelo o si aún tiene saltos disponibles.
             if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || jumpCount < maxJumps))
             {
                 if (isGrounded) 
@@ -105,20 +115,6 @@ public class PlayerController : MonoBehaviour
                     jumpCount = maxJumps; // Asegura que el salto no pase de 2
                 }
             }
-        }
-        // Si el personaje toca el suelo, reinicia el contador de saltos
-        if (isGrounded)
-        {
-            jumpCount = 0; // Reinicia el contador de saltos
-        }
-        // Detener la animación de salto cuando el personaje está en el aire o en el suelo
-        if (isGrounded)
-        {
-            animator.SetBool("isJumping", false);
-        }
-        else
-        {
-            animator.SetBool("isJumping", true); // Mantiene la animación activa mientras está en el aire
         }
         
         // Reinicio del juego si las vidas se reducen a cero
@@ -186,11 +182,14 @@ public class PlayerController : MonoBehaviour
         canMove = true;
     }
 
+    // Al entrar en el área de colisión con un objeto interactuable,
+    // se obtiene el componente IInteractable del objeto para interactuar con él.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         currentInteractable = collision.GetComponent<IInteractable>();
     }
-
+    // Al salir del área de colisión con un objeto interactuable,
+    // se elimina la referencia al objeto interactuable actual.
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.GetComponent<IInteractable>() == currentInteractable)
