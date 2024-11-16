@@ -6,7 +6,7 @@ public class DummyPlatform : MonoBehaviour
 {
     private float leftLimit;
     private float rightLimit;
-    private float speed = 2f;
+    private float speed = 3f;
     private bool movingRight = false;
     private Vector3 initialPosition;
 
