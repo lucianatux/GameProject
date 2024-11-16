@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement; 
+using UnityEngine.UI; 
+using TMPro; 
+
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -8,17 +11,20 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private IInteractable currentInteractable;
+    public TextMeshProUGUI livesText; // Para usar TextMeshPro
+
 
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private int extraJump = 1;
+    [SerializeField] private int extraJump = 2;
     private bool facingRight = true; // Indica la dirección del personaje
     private int jumpCount = 0; // Contador de saltos
     private bool isGrounded = false; // Indica si el personaje está en el suelo
     private int currentLives;
+
 
     // Inicializa los componentes necesarios del jugador (Rigidbody y Animator).
     // También establece la cantidad inicial de vidas del jugador.
@@ -77,8 +83,6 @@ public class PlayerController : MonoBehaviour
                     currentInteractable.Interact();
                 }
             }
-
-            
         
             // Si el jugador pierde todas las vidas, se reinicia la escena actual.
             if (currentLives <= 0)
@@ -115,7 +119,7 @@ public class PlayerController : MonoBehaviour
                 // Aseguramos que el contador no pase del máximo
                 if (jumpCount > extraJump)
                 {
-                    jumpCount = extraJump; // Asegura que el salto no pase de 2
+                    jumpCount = extraJump; // Asegura que el salto no pase del maximo 
                 }
         }
     }
@@ -126,18 +130,23 @@ public class PlayerController : MonoBehaviour
         {
             currentLives++;
             Debug.Log("Punto de vida añadida. Puntos de vida actuales: " + currentLives);
+            UpdateLivesUI(); // Actualiza el texto en pantalla
+
         }
     //Método para restar un punto de vida al jugador
     public void LoseLife()
     {
         currentLives--;
         Debug.Log("Punto de vida perdida. Puntos de vida restantes: " + currentLives);
+        UpdateLivesUI(); // Actualiza el texto en pantalla
+
 
         if (currentLives <= 0)
         {
             RestartGame();
         }
     }
+
     //Reinicia el juego
     private void RestartGame()
     {
@@ -145,6 +154,17 @@ public class PlayerController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    private void UpdateLivesUI()
+    {
+        if (livesText != null)
+        {
+            livesText.text = "Life points: " + currentLives; // Cambia el texto en pantalla
+        }
+        else
+        {
+            Debug.LogError("No se asignó el Text para mostrar las vidas.");
+        }
+    }
 
     // Método para voltear la dirección del personaje
     void Flip()
