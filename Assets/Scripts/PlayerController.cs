@@ -129,7 +129,6 @@ public class PlayerController : MonoBehaviour
     public void AddLife()
         {
             currentLives++;
-            Debug.Log("Punto de vida añadida. Puntos de vida actuales: " + currentLives);
             UpdateLivesUI(); // Actualiza el texto en pantalla
 
         }
@@ -137,7 +136,6 @@ public class PlayerController : MonoBehaviour
     public void LoseLife()
     {
         currentLives--;
-        Debug.Log("Punto de vida perdida. Puntos de vida restantes: " + currentLives);
         UpdateLivesUI(); // Actualiza el texto en pantalla
 
 
