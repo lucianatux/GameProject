@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PushableObject : MonoBehaviour
 {
-     private Rigidbody2D rb;
+    private Rigidbody2D rb;
     public float massReductionFactor = 0.5f;  // Factor de reducción de masa (50%)
     private float originalMass;
 

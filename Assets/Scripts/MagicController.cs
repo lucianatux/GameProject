@@ -13,11 +13,11 @@ public class MagicController : MonoBehaviour
         // Verifica que el AudioSource se ha encontrado
         if (audioSource == null)
         {
-            Debug.LogError("¡No se encontró el componente AudioSource!");
+            //Debug.LogError("¡No se encontró el componente AudioSource!");
         }
         else
         {
-            Debug.Log("AudioSource encontrado.");
+            //Debug.Log("AudioSource encontrado.");
         }
     }
 

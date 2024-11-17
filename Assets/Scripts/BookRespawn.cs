@@ -14,7 +14,7 @@ public class BookRespawn : MonoBehaviour
     {
         // Obtener el componente Rigidbody2D al inicio
         rb = GetComponent<Rigidbody2D>();
-        Debug.Log("Iniciando libro, posición inicial: " + transform.position);
+        //Debug.Log("Iniciando libro, posición inicial: " + transform.position);
     }
 
     private void Update()
@@ -29,7 +29,7 @@ public class BookRespawn : MonoBehaviour
         if (!isPushed && Mathf.Abs(rb.velocity.x) > 0.1f)
         {
             isPushed = true;
-            Debug.Log("El libro ha sido empujado.");
+            //Debug.Log("El libro ha sido empujado.");
         }
     }
 
@@ -39,7 +39,7 @@ public class BookRespawn : MonoBehaviour
         if (isPushed && !isFalling && Mathf.Abs(rb.velocity.y) > 3f)
         {
             isFalling = true;
-            Debug.Log("El libro ha comenzado a caer.");
+            //Debug.Log("El libro ha comenzado a caer.");
             StartCoroutine(RespawnAfterDelay(1f)); // Espera 1 segundo antes de hacer respawn
         }
     }
@@ -47,20 +47,20 @@ public class BookRespawn : MonoBehaviour
     private System.Collections.IEnumerator RespawnAfterDelay(float delay)
     {
         // Mostrar el tiempo de espera
-        Debug.Log("Esperando " + delay + " segundos antes de hacer respawn.");
+        //Debug.Log("Esperando " + delay + " segundos antes de hacer respawn.");
         yield return new WaitForSeconds(delay);
 
         // Mueve el libro a la posición de respawn y ajusta su rotación
         transform.position = respawnPosition;
         transform.rotation = Quaternion.Euler(0, 0, respawnRotation);
-        Debug.Log("El libro ha reaparecido en la posición: " + transform.position);
+        //Debug.Log("El libro ha reaparecido en la posición: " + transform.position);
 
         // Desactivar la física para mantenerlo inmóvil
         rb.velocity = Vector2.zero;  // Detener cualquier velocidad que tenga
         rb.angularVelocity = 0;      // Detener cualquier movimiento angular
         rb.isKinematic = true;       // Desactivar la física
         rb.gravityScale = 0;         // Desactivar la gravedad
-        Debug.Log("La física del libro ha sido desactivada.");
+        //Debug.Log("La física del libro ha sido desactivada.");
 
         // Reiniciar el estado para futuras interacciones
         isPushed = false;
