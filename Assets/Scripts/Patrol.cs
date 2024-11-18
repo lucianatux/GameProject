@@ -7,28 +7,40 @@ public class Patrol : MonoBehaviour
     private float leftLimit;
     private float rightLimit;
     private float speed = 2f;
-    private float fallSpeed = 12f; // Velocidad de caída al ser pisado
-    private float fallDelay = 0.3f; // Retraso en segundos antes de comenzar a caer
+    private float fallSpeed = 10f; // Velocidad de caída al ser pisado
+    private float fallDelay = 0.5f; // Retraso en segundos antes de comenzar a caer
 
     private bool movingRight = false;
     private bool isSteppedOn = false; // Controla si el mosquito fue pisado
     private Vector3 initialPosition; // Guardará la posición inicial del mosquito
+    public int left;
+    public int right;
+
+    private SprayOff sprayOffScript; // Referencia al script SprayOff
 
 
     private void Start()
     {
          initialPosition = transform.position; // Guarda la posición inicial al iniciar el juego
         // Ajustamos los límites de patrullaje en base a la posición inicial
-        leftLimit = initialPosition.x - 3f; // Establece el límite izquierdo con respecto a la posición inicial
-        rightLimit = initialPosition.x + 3f; // Establece el límite derecho con respecto a la posición inicial
+        leftLimit = initialPosition.x - left; // Establece el límite izquierdo con respecto a la posición inicial
+        rightLimit = initialPosition.x + right; // Establece el límite derecho con respecto a la posición inicial
+    
+        // Obtener la referencia al script SprayOff en el objeto que tiene el controlador
+        sprayOffScript = FindObjectOfType<SprayOff>();
     }
 
 
     private void Update()
     {
-        if (!isSteppedOn)
+        if (!isSteppedOn && (sprayOffScript == null || !sprayOffScript.isSpraying)) 
         {
             PatrolMosquito();
+        }
+         // Si isSpraying es true, los mosquitos caen
+        if (sprayOffScript != null && sprayOffScript.isSpraying && !isSteppedOn) 
+        {
+              StartCoroutine(BeginFall());
         }
     }
 
@@ -75,7 +87,6 @@ public class Patrol : MonoBehaviour
             {
                 StartCoroutine(BeginFall()); // Inicia la corrutina para el retraso de la caída
             }
-             
             else
             {
                 // Si el mosquito pica al jugador por contacto en cualquier parte
@@ -101,8 +112,7 @@ public class Patrol : MonoBehaviour
     {
         isSteppedOn = true; // Detiene el patrullaje cuando es pisado
         float fallTime = 0f;
-
-        while (fallTime < 25f) // Cae durante x segundos
+        while (fallTime <10f) // Cae durante x segundos
         {
             transform.position += Vector3.down * fallSpeed * Time.deltaTime;
             fallTime += Time.deltaTime;
@@ -113,4 +123,6 @@ public class Patrol : MonoBehaviour
         isSteppedOn = false;
         transform.position = initialPosition; // Vuelve a la posición inicial
     }
+    
+    
 }

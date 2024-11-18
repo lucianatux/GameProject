@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        currentLives = 1;
+        currentLives = 10;
     }
 
     // Update is called once per frame
