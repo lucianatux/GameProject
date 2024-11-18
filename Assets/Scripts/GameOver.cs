@@ -7,7 +7,8 @@ public class GameOver : MonoBehaviour
 {
    // Referencia al componente TextMeshPro o Text de la UI
     public TextMeshProUGUI textUI;  // Cambia a Text si usas el sistema tradicional de Unity
-    public string message = "Level 1 and 2 Completed!";  // El mensaje que se va a mostrar
+    public string message = "Level 2 Completed!";  // El mensaje que se va a mostrar
+    public float time = 2f;
 
     // Llama este método cuando otro collider entra en el trigger
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,7 +22,7 @@ public class GameOver : MonoBehaviour
         }
     }
 
-    // Opcional: si quieres que el texto desaparezca después de un tiempo
+    // que el texto desaparezca después de un tiempo
     public void HideTextAfterTime(float time)
     {
         Invoke("HideText", time);

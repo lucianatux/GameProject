@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private int extraJump = 2;
+    [SerializeField] private int extraJump = 1;
     private bool facingRight = true; // Indica la dirección del personaje
     private int jumpCount = 0; // Contador de saltos
     private bool isGrounded = false; // Indica si el personaje está en el suelo
@@ -135,8 +135,10 @@ public class PlayerController : MonoBehaviour
     //Método para restar un punto de vida al jugador
     public void LoseLife()
     {
+        animator.SetBool("isDamaged", true);
         currentLives--;
         UpdateLivesUI(); // Actualiza el texto en pantalla
+        animator.SetBool("isDamaged", false);
 
 
         if (currentLives <= 0)
