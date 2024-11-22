@@ -15,6 +15,8 @@ public class Patrol : MonoBehaviour
     private Vector3 initialPosition; // Guardará la posición inicial del mosquito
     public int left;
     public int right;
+
+
     public AudioSource audioSource; // Referencia al AudioSource
 
     private SprayOff sprayOffScript; // Referencia al script SprayOff
@@ -101,6 +103,19 @@ public class Patrol : MonoBehaviour
             }
             else
             {
+                MosquitoDamage(collision);
+            }
+           
+        }
+         else
+            {
+                MosquitoDamage(collision);
+            }
+    }
+
+    private void MosquitoDamage(Collision2D collision)
+    {
+        
                 // Si el mosquito pica al jugador por contacto en cualquier parte
                 PlayerController player = collision.gameObject.GetComponent<PlayerController>();
 
@@ -109,11 +124,10 @@ public class Patrol : MonoBehaviour
                     player.LoseLife(); // Quita una vida al jugador
                 }
                 if (audioSource != null)
-            {
-                audioSource.Play(); // Reproduce el audio
-            }
-            }
-        }
+                {
+                    audioSource.Play(); // Reproduce el audio
+                }
+            
     }
 
     private IEnumerator BeginFall()

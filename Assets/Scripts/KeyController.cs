@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class KeyController : MonoBehaviour
 {
+    public AudioSource audioSource; // Referencia al AudioSource
+
+    private void Start()
+    {
+        // Obtener el AudioSource del mismo GameObject
+        audioSource = GetComponent<AudioSource>();
+    }
+
     // Este método se llama cuando otro collider entra en el trigger
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,7 +26,10 @@ public class KeyController : MonoBehaviour
     // Método para manejar la recogida de la llave
     private void CollectKey()
     {
-        // Destruye el GameObject (la llave desaparece permanentemente)
-        Destroy(gameObject);
+          if (audioSource != null)
+            {
+                audioSource.Play(); // Reproduce el audio
+            }
+            Destroy(gameObject, audioSource.clip.length); // Destruye la llave después de que termine el audio
     }
 }
