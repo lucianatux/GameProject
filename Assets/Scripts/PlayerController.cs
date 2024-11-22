@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 9f;
+    [SerializeField] private float jumpForce = 10f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
         // El salto es permitido si el jugador está en el suelo o si aún tiene saltos disponibles.
         if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || jumpCount < extraJump))
         {
-                //rb.velocity = new Vector2(rb.velocity.x, 0f); // Reinicia la velocidad en y antes del salto
+                rb.velocity = new Vector2(rb.velocity.x, 0f); // Reinicia la velocidad en y antes del salto
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 jumpCount++; // Incrementa el contador de saltos
 

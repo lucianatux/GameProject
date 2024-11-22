@@ -15,6 +15,7 @@ public class Patrol : MonoBehaviour
     private Vector3 initialPosition; // Guardará la posición inicial del mosquito
     public int left;
     public int right;
+    public AudioSource audioSource; // Referencia al AudioSource
 
     private SprayOff sprayOffScript; // Referencia al script SprayOff
 
@@ -28,6 +29,17 @@ public class Patrol : MonoBehaviour
     
         // Obtener la referencia al script SprayOff en el objeto que tiene el controlador
         sprayOffScript = FindObjectOfType<SprayOff>();
+        // Obtener el AudioSource del mismo GameObject
+        audioSource = GetComponent<AudioSource>();
+        // Verifica que el AudioSource se ha encontrado
+        if (audioSource == null)
+        {
+            //Debug.LogError("¡No se encontró el componente AudioSource!");
+        }
+        else
+        {
+            //Debug.Log("AudioSource encontrado.");
+        }
     }
 
 
@@ -96,6 +108,10 @@ public class Patrol : MonoBehaviour
                 {
                     player.LoseLife(); // Quita una vida al jugador
                 }
+                if (audioSource != null)
+            {
+                audioSource.Play(); // Reproduce el audio
+            }
             }
         }
     }

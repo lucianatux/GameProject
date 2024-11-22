@@ -37,7 +37,7 @@ public class MagicController : MonoBehaviour
             {
                 audioSource.Play(); // Reproduce el audio
             }
-            Destroy(gameObject); // Destruye el objeto de magia
+            Destroy(gameObject, audioSource.clip.length); // Destruye después de que termine el audio
         }
     }
    
