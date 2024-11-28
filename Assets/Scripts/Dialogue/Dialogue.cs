@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; 
-
+using UnityEngine.UI; // Para usar imágenes
+using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-    [SerializeField, TextArea(4,6)] private string[] dialogueLines;
-    [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] private TMP_Text dialogueText;
-
+    [SerializeField, TextArea(4, 6)] private string[] dialogueLines; // Líneas de diálogo
+    [SerializeField] private Sprite[] dialogueImages; // Imágenes opcionales para cada línea
+    [SerializeField] private GameObject dialoguePanel; // Panel de diálogo
+    [SerializeField] private TMP_Text dialogueText; // Texto del diálogo
+    [SerializeField] private Image dialogueImage; // Imagen que se mostrará (opcional)
 
     private bool isPlayerInRange;
     private bool didDialogueStart;
@@ -17,17 +18,15 @@ public class Dialogue : MonoBehaviour
 
     private float typingTime = 0.05f;
 
-
-    // Update is called once per frame
     void Update()
     {
-        if(isPlayerInRange && Input.GetKeyDown(KeyCode.X))
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.X))
         {
-            if(!didDialogueStart)
+            if (!didDialogueStart)
             {
                 StartDialogue();
             }
-            else if(dialogueText.text == dialogueLines[lineIndex])
+            else if (dialogueText.text == dialogueLines[lineIndex])
             {
                 NextDialogueLine();
             }
@@ -36,7 +35,7 @@ public class Dialogue : MonoBehaviour
                 StopAllCoroutines();
                 dialogueText.text = dialogueLines[lineIndex];
             }
-        }   
+        }
     }
 
     private void StartDialogue()
@@ -44,49 +43,68 @@ public class Dialogue : MonoBehaviour
         didDialogueStart = true;
         dialoguePanel.SetActive(true);
         lineIndex = 0;
-        StartCoroutine(ShowLine());
+        ShowDialogueLine();
     }
 
     private void NextDialogueLine()
     {
         lineIndex++;
-        if(lineIndex < dialogueLines.Length)
+        if (lineIndex < dialogueLines.Length)
         {
-            StartCoroutine(ShowLine());
+            ShowDialogueLine();
         }
         else
         {
-            didDialogueStart= false;
+            didDialogueStart = false;
             dialoguePanel.SetActive(false);
         }
     }
 
-    private IEnumerator ShowLine()
+    private void ShowDialogueLine()
     {
         dialogueText.text = string.Empty;
+        StartCoroutine(TypeLine(dialogueLines[lineIndex]));
 
-        foreach(char ch in dialogueLines[lineIndex])
+        // Configurar imagen para la línea actual
+        if (lineIndex < dialogueImages.Length && dialogueImages[lineIndex] != null)
+        {
+            dialogueImage.sprite = dialogueImages[lineIndex];
+            dialogueImage.gameObject.SetActive(true); // Mostrar imagen
+        }
+        else
+        {
+            dialogueImage.gameObject.SetActive(false); // Ocultar imagen si no hay
+        }
+    }
+
+    private IEnumerator TypeLine(string line)
+    {
+        foreach (char ch in line)
         {
             dialogueText.text += ch;
             yield return new WaitForSeconds(typingTime);
         }
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             isPlayerInRange = true;
-            Debug.Log("se puede iniciar dialogo");
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            Debug.Log("no se puede iniciar dialogo");
-        }               
+        }
+
+        if (didDialogueStart)
+        {
+            didDialogueStart = false;
+            dialoguePanel.SetActive(false);
+        }
     }
 }

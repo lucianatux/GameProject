@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
     {
         if (livesText != null)
         {
-            livesText.text = "Life points: " + currentLives; // Cambia el texto en pantalla
+            livesText.text = " " + currentLives; // Cambia el texto en pantalla
         }
         else
         {

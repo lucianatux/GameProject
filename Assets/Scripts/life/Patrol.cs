@@ -100,12 +100,7 @@ public class Patrol : MonoBehaviour
             if (contactPoint.y > mosquitoPosition.y && !isSteppedOn)
             {
                 StartCoroutine(BeginFall()); // Inicia la corrutina para el retraso de la caída
-            }
-            else
-            {
-                MosquitoDamage(collision);
-            }
-           
+            } 
         }
          else
             {
