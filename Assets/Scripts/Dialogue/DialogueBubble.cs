@@ -100,7 +100,6 @@ public class DialogueBubble : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPlayerInRange = true;
-            Debug.Log("se puede iniciar dialogo");
         }
     }
 
@@ -109,7 +108,6 @@ public class DialogueBubble : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            Debug.Log("no se puede iniciar dialogo");
 
             if (didDialogueStart)
             {
