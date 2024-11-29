@@ -14,9 +14,6 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private PlayerController playerController; // Referencia al script del jugador
     [SerializeField] private Animator playerAnimator; // Referencia al Animator del jugador
 
-
-
-
     private bool isPlayerInRange;
     private bool didDialogueStart;
     private int lineIndex;

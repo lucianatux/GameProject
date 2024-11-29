@@ -67,14 +67,14 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isTurningAround", Input.GetKey(KeyCode.Z)); // Activa/desactiva mientras "Z" esté presionada
 
             // Hablar con el usuario
-             if (!isInDialogue) // Solo ejecuta esta lógica si no está en un diálogo
+            /* if (!isInDialogue) // Solo ejecuta esta lógica si no está en un diálogo
             {
                 animator.SetBool("isTalkingFront", Input.GetKey(KeyCode.X));
-            }
+            }*/
 
             // Hablar de costado
-            animator.SetBool("isTalkingSide", Input.GetKey(KeyCode.C)); // Activa/desactiva mientras "C" esté presionada
-
+            /*animator.SetBool("isTalkingSide", Input.GetKey(KeyCode.C)); // Activa/desactiva mientras "C" esté presionada
+*/
             //Activar elementos
             // Si el jugador presiona la tecla F, se ejecuta la interacción con el objeto cercano
             // si es que hay un objeto interactuable.
