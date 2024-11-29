@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private int jumpCount = 0; // Contador de saltos
     private bool isGrounded = false; // Indica si el personaje está en el suelo
     private int currentLives;
+    private bool isInDialogue = false; // Para saber si está en un diálogo
+
 
 
     // Inicializa los componentes necesarios del jugador (Rigidbody y Animator).
@@ -65,7 +67,10 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isTurningAround", Input.GetKey(KeyCode.Z)); // Activa/desactiva mientras "Z" esté presionada
 
             // Hablar con el usuario
-            animator.SetBool("isTalkingFront", Input.GetKey(KeyCode.X)); // Activa/desactiva mientras "X" esté presionada
+             if (!isInDialogue) // Solo ejecuta esta lógica si no está en un diálogo
+            {
+                animator.SetBool("isTalkingFront", Input.GetKey(KeyCode.X));
+            }
 
             // Hablar de costado
             animator.SetBool("isTalkingSide", Input.GetKey(KeyCode.C)); // Activa/desactiva mientras "C" esté presionada
@@ -214,6 +219,13 @@ public class PlayerController : MonoBehaviour
             currentInteractable = null;
         }
     }
+
+    // Método desde el sistema de diálogo para activar/desactivar el flag
+    public void SetDialogueState(bool state)
+    {
+        isInDialogue = state;
+    }
+
 
 }
 

@@ -11,6 +11,11 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private GameObject dialoguePanel; // Panel de diálogo
     [SerializeField] private TMP_Text dialogueText; // Texto del diálogo
     [SerializeField] private Image dialogueImage; // Imagen que se mostrará (opcional)
+    [SerializeField] private PlayerController playerController; // Referencia al script del jugador
+    [SerializeField] private Animator playerAnimator; // Referencia al Animator del jugador
+
+
+
 
     private bool isPlayerInRange;
     private bool didDialogueStart;
@@ -63,6 +68,10 @@ public class Dialogue : MonoBehaviour
     private void ShowDialogueLine()
     {
         dialogueText.text = string.Empty;
+
+        playerController.SetDialogueState(true); // Indica que está en un diálogo
+        playerAnimator.SetBool("isTalkingFront", true);
+
         StartCoroutine(TypeLine(dialogueLines[lineIndex]));
 
         // Configurar imagen para la línea actual
@@ -84,6 +93,8 @@ public class Dialogue : MonoBehaviour
             dialogueText.text += ch;
             yield return new WaitForSeconds(typingTime);
         }
+        playerController.SetDialogueState(false); 
+        playerAnimator.SetBool("isTalkingFront", false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
