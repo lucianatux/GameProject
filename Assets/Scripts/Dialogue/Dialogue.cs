@@ -114,5 +114,7 @@ public class Dialogue : MonoBehaviour
             didDialogueStart = false;
             dialoguePanel.SetActive(false);
         }
+        playerController.SetDialogueState(false); 
+        playerAnimator.SetBool("isTalkingFront", false);
     }
 }
