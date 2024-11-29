@@ -14,6 +14,8 @@ public class DialogueBubble : MonoBehaviour
     [SerializeField] private Image playerImage; // Imagen del jugador (izquierda)
     [SerializeField] private Image npcImage; // Imagen del NPC (derecha)
     [SerializeField] private Animator playerAnimator; // Referencia al Animator del jugador
+    [SerializeField] private Animator npcAnimator; // Referencia al Animator del npc
+
 
 
     private bool isPlayerInRange;
@@ -24,7 +26,7 @@ public class DialogueBubble : MonoBehaviour
 
     void Update()
     {
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.X))
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.LeftAlt))
         {
             if (!didDialogueStart)
             {
@@ -84,6 +86,8 @@ public class DialogueBubble : MonoBehaviour
                 npcImage.sprite = characterFaces[lineIndex]; // Actualizar cara del NPC
                 npcImage.gameObject.SetActive(true);
                 playerImage.gameObject.SetActive(false); // Ocultar la del jugador
+                 // Activar la animación "isTalking" solo cuando es el npc quien habla
+                npcAnimator.SetBool("isTalking", true);
             }
         }
     }
@@ -99,8 +103,13 @@ public class DialogueBubble : MonoBehaviour
         }
         if(isPlayerSpeaking[lineIndex])
         {
-        // Desactivar la animación "isTalkingSide" cuando no es el jugador quien habla
-        playerAnimator.SetBool("isTalkingSide", false);
+            // Desactivar la animación "isTalkingSide" 
+            playerAnimator.SetBool("isTalkingSide", false);
+        }
+        else
+        {
+            // Desactivar la animación "isTalking" 
+            npcAnimator.SetBool("isTalking", false);
         }
     }
 
