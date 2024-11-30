@@ -41,7 +41,7 @@ public class Socket : MonoBehaviour
                 // Actualizar el parámetro "isOff" en el Animator
                 fanAnimator.SetBool("isOff", isActive);
 
-                Debug.Log($"socketOff está {(isActive ? "activado" : "desactivado")}, fan animación {(isActive ? "FanOff" : "Idle")}");
+                //Debug.Log($"socketOff está {(isActive ? "activado" : "desactivado")}, fan animación {(isActive ? "FanOff" : "Idle")}");
             }
             else
             {
