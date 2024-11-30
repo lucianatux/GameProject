@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = false; // Indica si el personaje está en el suelo
     private int currentLives;
     private bool isInDialogue = false; // Para saber si está en un diálogo
-
+    private bool isInMusicBox = false; // Para saber si está en la caja musical
 
 
     // Inicializa los componentes necesarios del jugador (Rigidbody y Animator).
@@ -64,7 +64,10 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isPushing", Input.GetKey(KeyCode.E)); // Activa/desactiva mientras "E" esté presionada
 
             // Dar la vuelta
-            animator.SetBool("isTurningAround", Input.GetKey(KeyCode.Z)); // Activa/desactiva mientras "Z" esté presionada
+            if (!isInMusicBox)
+            {
+                animator.SetBool("isTurningAround", Input.GetKey(KeyCode.Z)); // Activa/desactiva mientras "Z" esté presionada
+            }
 
             // Hablar con el usuario
              if (!isInDialogue) // Solo ejecuta esta lógica si no está en un diálogo
@@ -224,6 +227,11 @@ public class PlayerController : MonoBehaviour
     public void SetDialogueState(bool state)
     {
         isInDialogue = state;
+    }
+    // Método desde el sistema de diálogo para activar/desactivar el flag
+    public void SetMusicBoxState(bool state)
+    {
+        isInMusicBox = state;
     }
 
 

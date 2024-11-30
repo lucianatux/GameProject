@@ -4,30 +4,25 @@ using UnityEngine;
 
 public class MusicBox : MonoBehaviour
 {
-    public Animator playerAnimator; // Referencia al Animator del jugador
-    public AudioSource audioSource; // Referencia al AudioSource para la música
-    public float turnAroundDuration = 14f; // Duración en segundos del "turnaround"
+    [SerializeField] private Animator playerAnimator; // Referencia al Animator del jugador
+    [SerializeField] private PlayerController playerController; // Referencia al script del jugador
+    [SerializeField] private AudioSource audioSource; // Referencia al AudioSource para la música
 
-    private bool isInsideTrigger = false; // Determina si el jugador está dentro del área
-    private float timer = 0f; // Temporizador para controlar la duración del "turnaround"
+    private bool isPlayerInRange= false;
 
     private void Update()
     {
-        // Si el jugador está dentro del área de la caja musical y el temporizador está corriendo
-        if (isInsideTrigger)
+        // Si el jugador está dentro del área de la caja musical 
+        if (isPlayerInRange)
         {
-            // Temporizador que simula la tecla Z presionada por x segundos
-            if (timer < turnAroundDuration)
-            {
-                timer += Time.deltaTime; // Aumenta el tiempo transcurrido
-                playerAnimator.SetBool("isTurningAround", true); // Mantiene la animación activada
-            }
-            else
-            {
-                // Después de x segundos, desactiva la animación
-                playerAnimator.SetBool("isTurningAround", false);
-                isInsideTrigger = false; // Desactiva el área de influencia
-            }
+            playerController.SetMusicBoxState(true); // Indica que está en la caja musical
+            playerAnimator.SetBool("isTurningAround", true); // Mantiene la animación activada
+        }
+        else
+        {
+            //  desactiva la animación
+            playerController.SetMusicBoxState(false); 
+            playerAnimator.SetBool("isTurningAround", false);
         }
     }
 
@@ -40,10 +35,7 @@ public class MusicBox : MonoBehaviour
             {
                 audioSource.Play();
             }
-
-            // Inicia el temporizador al entrar en el área
-            isInsideTrigger = true;
-            timer = 0f; // Reinicia el temporizador
+            isPlayerInRange = true;
         }
     }
 
@@ -56,11 +48,8 @@ public class MusicBox : MonoBehaviour
             {
                 audioSource.Stop();
             }
+            isPlayerInRange = false;
 
-            // Detiene la animación inmediatamente si el jugador sale del área
-            playerAnimator.SetBool("isTurningAround", false);
-            isInsideTrigger = false; // Detiene la acción de "turnaround"
-            timer = 0f; // Reinicia el temporizador
         }
     }
 }

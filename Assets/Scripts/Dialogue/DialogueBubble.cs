@@ -104,12 +104,18 @@ public class DialogueBubble : MonoBehaviour
         if(isPlayerSpeaking[lineIndex])
         {
             // Desactivar la animación "isTalkingSide" 
+             if (playerAnimator != null)
+        {
             playerAnimator.SetBool("isTalkingSide", false);
+        }
         }
         else
         {
             // Desactivar la animación "isTalking" 
+            if (npcAnimator != null)
+        {
             npcAnimator.SetBool("isTalking", false);
+        }
         }
     }
 
@@ -132,6 +138,14 @@ public class DialogueBubble : MonoBehaviour
                 didDialogueStart = false;
                 dialoguePanel.SetActive(false);
             }
+        }
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetBool("isTalkingSide", false);
+        }
+        if (npcAnimator != null)
+        {
+            npcAnimator.SetBool("isTalking", false);
         }
     }
 }
