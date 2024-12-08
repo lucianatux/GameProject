@@ -61,10 +61,6 @@ public class DummyPlatform : MonoBehaviour
             {
                 collision.transform.SetParent(null);
             }
-            else
-            {
-                Debug.LogWarning("El objeto está desactivado, no se pudo desasociar al Player.");
-            }
         }
     }
 }

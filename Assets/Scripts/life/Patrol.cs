@@ -16,9 +16,7 @@ public class Patrol : MonoBehaviour
     public int left;
     public int right;
 
-
     public AudioSource audioSource; // Referencia al AudioSource
-
     private SprayOff sprayOffScript; // Referencia al script SprayOff
 
 
@@ -100,12 +98,15 @@ public class Patrol : MonoBehaviour
             if (contactPoint.y > mosquitoPosition.y && !isSteppedOn)
             {
                 StartCoroutine(BeginFall()); // Inicia la corrutina para el retraso de la caída
-            } 
-        }
-         else
-            {
+            }
+            else{
                 MosquitoDamage(collision);
             }
+        }
+        else
+        {
+            MosquitoDamage(collision);
+        }
     }
 
     private void MosquitoDamage(Collision2D collision)
@@ -113,7 +114,6 @@ public class Patrol : MonoBehaviour
         
                 // Si el mosquito pica al jugador por contacto en cualquier parte
                 PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-
                 if (player != null)
                 {
                     player.LoseLife(); // Quita una vida al jugador

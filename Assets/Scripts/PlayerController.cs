@@ -143,16 +143,25 @@ public class PlayerController : MonoBehaviour
     //Método para restar un punto de vida al jugador
     public void LoseLife()
     {
-        animator.SetBool("isDamaged", true);
-        currentLives--;
-        UpdateLivesUI(); // Actualiza el texto en pantalla
-        animator.SetBool("isDamaged", false);
+        animator.SetBool("isDamaged", true); // Activa la animación de daño
 
+        currentLives--; // Reduce vidas
+        UpdateLivesUI(); // Actualiza la interfaz de vidas
 
-        if (currentLives <= 0)
+        if (currentLives > 0)
         {
-            RestartGame();
+            StartCoroutine(HandleDamageAnimation());
         }
+        else
+        {
+            RestartGame(); // Si no hay vidas, reinicia el juego
+        }
+    }
+
+    private IEnumerator HandleDamageAnimation()
+    {
+        yield return new WaitForSeconds(1.5f); // Duración de la animación (ajústala según tu configuración)
+        animator.SetBool("isDamaged", false); // Vuelve al estado base después de que termine
     }
 
     //Reinicia el juego
