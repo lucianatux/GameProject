@@ -14,6 +14,15 @@ public class AudioDog : MonoBehaviour
             PlayAlertSound();
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // Verifica si el objeto que entra tiene el tag "enemy"
+        if (collision.CompareTag("Player"))
+        {
+            audioSource.Stop();
+
+        }
+    }
 
     private void PlayAlertSound()
     {
