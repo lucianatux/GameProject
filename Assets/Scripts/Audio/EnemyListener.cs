@@ -21,9 +21,5 @@ public class EnemyListener : MonoBehaviour
         {
             audioSource.Play(); // Reproduce el clip configurado en el AudioSource
         }
-        else
-        {
-            Debug.LogWarning("Falta un AudioSource en el ListeningField.");
-        }
     }
 }

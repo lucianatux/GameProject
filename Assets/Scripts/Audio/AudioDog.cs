@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AudioDog : MonoBehaviour
 {
-    [SerializeField] private AudioSource audioSource; // Fuente de audio para reproducir el sonido
+    [SerializeField]
+    private AudioSource audioSource; // Fuente de audio para reproducir el sonido
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,13 +15,13 @@ public class AudioDog : MonoBehaviour
             PlayAlertSound();
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         // Verifica si el objeto que entra tiene el tag "enemy"
         if (collision.CompareTag("Player"))
         {
             audioSource.Stop();
-
         }
     }
 

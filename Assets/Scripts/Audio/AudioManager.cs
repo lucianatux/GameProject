@@ -2,23 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SoundEffect
+{
+    Jump,
+    Push,
+    LifePoint,
+    Mosquito,
+}
 
- public enum SoundEffect
-    {
-        Jump,
-        Push,
-        LifePoint,
-        Mosquito
-        // Agrega más sonidos aquí según sea necesario
-    }
-
-    
 public class AudioManager : MonoBehaviour
 {
     public AudioSource audioSource; // Fuente de audio
     public AudioClip[] soundEffects; // Array de efectos de sonido
-
-   
 
     // Reproduce un sonido basado en su tipo
     public void PlaySound(SoundEffect sound)
