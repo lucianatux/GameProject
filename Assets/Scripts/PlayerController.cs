@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private int currentLives;
     private bool isInDialogue = false; // Para saber si está en un diálogo
     private bool isInMusicBox = false; // Para saber si está en la caja musical
+    private Vector3 lastCheckpointPosition; // Posición del último checkpoint
+
 
 
     // Inicializa los componentes necesarios del jugador (Rigidbody y Animator).
@@ -35,21 +37,19 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         currentLives = 1;
+        UpdateLivesUI(); 
     }
 
     // Update is called once per frame
     void Update()
     {
         HandleJump();     // Llamamos a la función de salto.
-       
-
         if (canMove)
         {
             // Movimiento horizontal
             float moveInput = Input.GetAxis("Horizontal");
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
             animator.SetFloat("Horizontal", Mathf.Abs(moveInput));
-
             // Giro del personaje
             if (moveInput > 0 && !facingRight)
             {
@@ -59,25 +59,20 @@ public class PlayerController : MonoBehaviour
             {
                 Flip();
             }
-
             // Empuje
             animator.SetBool("isPushing", Input.GetKey(KeyCode.E)); // Activa/desactiva mientras "E" esté presionada
-
             // Dar la vuelta
             if (!isInMusicBox)
             {
                 animator.SetBool("isTurningAround", Input.GetKey(KeyCode.Z)); // Activa/desactiva mientras "Z" esté presionada
             }
-
             // Hablar con el usuario
              if (!isInDialogue) // Solo ejecuta esta lógica si no está en un diálogo
             {
                 animator.SetBool("isTalkingFront", Input.GetKey(KeyCode.X));
             }
-
             // Hablar de costado
-            /*animator.SetBool("isTalkingSide", Input.GetKey(KeyCode.C)); // Activa/desactiva mientras "C" esté presionada
-*/
+            /*animator.SetBool("isTalkingSide", Input.GetKey(KeyCode.C)); // Activa/desactiva mientras "C" esté presionada*/
             //Activar elementos
             // Si el jugador presiona la tecla F, se ejecuta la interacción con el objeto cercano
             // si es que hay un objeto interactuable.
@@ -91,14 +86,9 @@ public class PlayerController : MonoBehaviour
                     currentInteractable.Interact();
                 }
             }
-        
-            // Si el jugador pierde todas las vidas, se reinicia la escena actual.
-            if (currentLives <= 0)
-            {
-                RestartGame();
-            }
         }
     }
+
     //Maneja el salto
     private void HandleJump()
     {
@@ -132,7 +122,6 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-
     //Método para agregar un punto de vida al jugador
     public void AddLife()
         {
@@ -140,6 +129,7 @@ public class PlayerController : MonoBehaviour
             UpdateLivesUI(); // Actualiza el texto en pantalla
 
         }
+    
     //Método para restar un punto de vida al jugador
     public void LoseLife()
     {
@@ -154,22 +144,41 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            RestartGame(); // Si no hay vidas, reinicia el juego
+            RestartFromCheckpoint(); // Si no hay vidas, reinicia el juego desde el ultimo checkpoint
         }
     }
 
     private IEnumerator HandleDamageAnimation()
     {
-        yield return new WaitForSeconds(1.5f); // Duración de la animación (ajústala según tu configuración)
+        yield return new WaitForSeconds(1.3f); // Duración de la animación 
         animator.SetBool("isDamaged", false); // Vuelve al estado base después de que termine
     }
 
-    //Reinicia el juego
-    private void RestartGame()
+    public void SetCheckpoint(Vector3 checkpointPosition)
     {
-        // Reinicia la escena actual
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        lastCheckpointPosition = checkpointPosition;
+        Debug.Log($"Checkpoint establecido en: {lastCheckpointPosition}");
     }
+
+    public void RestartFromCheckpoint()
+    {
+      // Vuelve a la última posición del checkpoint
+        transform.position = lastCheckpointPosition;
+        // Detener cualquier movimiento anterior (si está en el aire)
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        
+        // Reiniciar animaciones si es necesario
+        Animator animator = GetComponent<Animator>();
+        animator.SetBool("isDamaged", false);
+        animator.SetBool("isJumping", false);
+        animator.Play("Idle"); // O la animación que prefieras al reiniciar
+
+        Debug.Log("Reiniciando en el checkpoint.");
+        currentLives = 1;
+        UpdateLivesUI();
+    }
+      
+
 
     private void UpdateLivesUI()
     {
@@ -242,8 +251,6 @@ public class PlayerController : MonoBehaviour
     {
         isInMusicBox = state;
     }
-
-
 }
 
 
