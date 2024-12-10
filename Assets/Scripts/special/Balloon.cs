@@ -4,32 +4,64 @@ using UnityEngine;
 
 public class Balloon : MonoBehaviour
 {
-    private Rigidbody2D rbGlobo;  // Referencia al Rigidbody2D del globo
-    private Collider2D colGlobo;  // Referencia al Collider2D del globo
+    [SerializeField] private Transform player;  // Referencia al jugador
+    [SerializeField] private float floatHeight = 3f;  // Altura a la que el globo debe estar sobre el jugador
+    [SerializeField] private float ascentSpeed = 2f;  // Velocidad de ascenso del globo
+    [SerializeField] private float ceilingHeight = 34f;  // Altura máxima hasta donde el globo puede subir (techo)
+    [SerializeField] private GameObject balloonUp;  // Referencia al objeto BalloonUp que hace que el globo suba
 
-    // Llama este método al inicio
-    private void Start()
+    private bool isAttached = false;  // Si el globo está adherido al jugador
+    private bool isAscending = false;  // Si el globo está ascendiendo
+
+    void Update()
     {
-        // Obtén las referencias al Rigidbody2D y al Collider2D
-        rbGlobo = GetComponent<Rigidbody2D>();
-        colGlobo = GetComponent<Collider2D>();
-
-        // Desactiva la gravedad del globo inicialmente
-        rbGlobo.gravityScale = 0;  // Deja que el globo flote
-        rbGlobo.isKinematic = true;  // Mantiene el globo sin afectar la física inicialmente
-    }
-
-    // Este método se llama cuando el jugador entra en el trigger del globo
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Verifica si el objeto que colisiona tiene la etiqueta "Player"
-        if (collision.CompareTag("Player"))
+        // Si el globo está adherido al jugador, mantenerlo en su posición
+        if (isAttached && !isAscending)
         {
-            // Activa la física del globo para que caiga
-            rbGlobo.isKinematic = false;  // Habilita la física para que el globo caiga
-            rbGlobo.gravityScale = 1;  // Aplica gravedad para que el globo caiga hacia el suelo
-
-            // Puedes hacer cualquier otra acción aquí si lo necesitas (animaciones, sonidos, etc.)
+            transform.position = player.position + Vector3.up * floatHeight;
         }
     }
+
+    // Este método se llama cuando el globo entra en contacto con el jugador
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isAttached = true;  // El globo se adhiere al jugador
+        }
+
+        // Si el globo entra en contacto con el objeto BalloonUp, hacer que suba
+        if (other.CompareTag("BalloonUp"))
+        {
+            isAttached = false;  // El globo deja de estar adherido al jugador
+            StartCoroutine(MoveBalloonUp());  // Comienza el ascenso del globo
+        }
+    }
+
+    // Este método se llama cuando el jugador deja de estar en contacto con el globo
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isAttached = false;  // El globo deja de estar adherido al jugador
+        }
+    }
+
+    // Coroutine para mover el globo hacia arriba hasta el techo
+    private IEnumerator MoveBalloonUp()
+    {
+        isAscending = true;  // El globo comienza a ascender
+
+    while (transform.position.y < ceilingHeight)
+    {
+        // Mover el globo hacia arriba lentamente sin usar físicas, solo transform
+        transform.position = new Vector3(transform.position.x, transform.position.y + ascentSpeed * Time.deltaTime, transform.position.z);
+        yield return null;  // Esperar un frame
+    }
+
+    // Asegurar que el globo quede exactamente en el techo
+    transform.position = new Vector3(transform.position.x, ceilingHeight, transform.position.z);
+    isAscending = false;  // El globo deja de ascender
+    }
+
 }
