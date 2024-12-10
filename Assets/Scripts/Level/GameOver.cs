@@ -7,7 +7,7 @@ public class GameOver : MonoBehaviour
 {
    // Referencia al componente TextMeshPro o Text de la UI
     public TextMeshProUGUI textUI;  // Cambia a Text si usas el sistema tradicional de Unity
-    public string message = "Level 2 Completed!";  // El mensaje que se va a mostrar
+    public string message = "Level 2 Completed! To be continued...";  // El mensaje que se va a mostrar
     public float time = 2f;
 
     // Llama este método cuando otro collider entra en el trigger
