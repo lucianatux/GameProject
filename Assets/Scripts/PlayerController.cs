@@ -171,15 +171,13 @@ public class PlayerController : MonoBehaviour
         Animator animator = GetComponent<Animator>();
         animator.SetBool("isDamaged", false);
         animator.SetBool("isJumping", false);
-        animator.Play("Idle"); // O la animación que prefieras al reiniciar
+        animator.Play("idle"); 
 
         Debug.Log("Reiniciando en el checkpoint.");
         currentLives = 1;
         UpdateLivesUI();
     }
       
-
-
     private void UpdateLivesUI()
     {
         if (livesText != null)
